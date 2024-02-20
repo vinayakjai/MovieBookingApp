@@ -1,7 +1,10 @@
+import './home.css'
 function Home(){
     return (
         <>
-        home page
+        <div className="movie-card-wrapper">
+
+        </div>
         </>
 
     )
