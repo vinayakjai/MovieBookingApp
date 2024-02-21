@@ -17,3 +17,21 @@
     width:100%;
     padding: 10px;
 }
+.search-bar{
+    position: relative;
+}
+.movies-suggestion{
+    position: absolute;
+    background-color: whitesmoke;
+    font-size: medium;
+    color:black;
+    width: 100%;
+}
+.movie-result{
+    font-size: medium;
+    display: block;
+    margin-bottom: 1rem;
+    padding: 0.7rem;
+    border-bottom: 1px solid black;
+    border-radius: 10px;
+}
