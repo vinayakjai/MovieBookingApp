@@ -2,15 +2,27 @@ import { useRef, useState } from "react";
 import "./navbar.css";
 import useMovieList from "../../HOOKS/useMovieLists";
 import useDebounce from "../../HOOKS/useDebounce";
+import { Link, useNavigate } from "react-router-dom";
 function Navbar() {
   const resultListRef = useRef(null);
-
+  let navigate = useNavigate();
   const [movieSearch, setMovieSearch] = useState("");
   const { movieList } = useMovieList(!movieSearch ? "avengers" : movieSearch);
+  function handleMovieTitleClick(e, movieId) {
+    navigate(`/movie/${movieId}`);
+  }
   return (
     <>
       <div className="navbar-wrapper">
-        <div>Movie Base</div>
+        <div
+          style={{
+            color: "white",
+            textDecoration: "none",
+          }}
+        >
+         
+          <Link to="/">Movie Base</Link>
+        </div>
         <div className="search-bar">
           <input
             type="text"
@@ -30,7 +42,11 @@ function Navbar() {
             {movieList.length > 0 &&
               movieList.map((movie) => {
                 return (
-                  <div className="movie-result" key={movie.imdbID}>
+                  <div
+                    className="movie-result"
+                    onMouseDown={(e) => handleMovieTitleClick(e, movie.imdbID)}
+                    key={movie.imdbID}
+                  >
                     {movie.Title}
                   </div>
                 );

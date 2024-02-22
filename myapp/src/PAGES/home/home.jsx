@@ -8,7 +8,7 @@ function Home() {
       <div className="movie-card-wrapper">
         {movieList.length > 0 ? (
           movieList.map((movie) => {
-            return <MovieCard {...movie} key={movie.imdbID} />;
+            return <MovieCard {...movie} key={movie.imdbID}  id={movie.imdbID}/>;
           })
         ) : (
           <p>plz wait</p>
