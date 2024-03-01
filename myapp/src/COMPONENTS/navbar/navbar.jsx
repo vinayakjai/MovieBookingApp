@@ -15,6 +15,15 @@ function Navbar() {
   function handleMovieTitleClick(e, movieId) {
     navigate(`/movie/${movieId}`);
   }
+  function updateTheme(){
+    if(theme=='dark'){
+      setTheme('light')
+      localStorage.setItem('theme','light')
+    }else{
+      setTheme('dark');
+      localStorage.setItem('theme','dark')
+    }
+  }
 
 const {theme,setTheme}=useContext(themeContext)
   return (
@@ -53,7 +62,7 @@ const {theme,setTheme}=useContext(themeContext)
               })}
           </div>
         </div>
-        <div onClick={()=>setTheme(theme==='dark'?'light':'dark')}>
+        <div onClick={updateTheme}>
           
         <FontAwesomeIcon className="theme-icon" icon={theme==='dark'?faSun:faMoon} />
         </div>
