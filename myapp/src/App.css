@@ -1,8 +1,36 @@
+
 :root{
+     /* dark mode
+   
+    */
     --prime-blue:#00a0d6;
     --dull-blue:#364f65;
     --dark-blue:#191e26;
+    --card-background:whitesmoke;
+    --font-color:black;
+    --font-color-inverted:white;
+    
+
+   
+    
 }
-body{
+
+[data-theme='light']{
+    --prime-blue:#00a0d6;
+    --dull-blue:#364f65;
+    --dark-blue:#ffffff;
+    --card-background:#00a0d6;
+    --font-color:white;
+    --font-color-inverted:black;
+
+}
+
+
+#app-wrapper{
     background-color: var(--dark-blue);
+}
+
+body{
+    margin:0;
+    padding:0;
 }

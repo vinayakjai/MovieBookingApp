@@ -1,8 +1,12 @@
-import { useRef, useState } from "react";
+import { useRef, useState,useContext } from "react";
 import "./navbar.css";
 import useMovieList from "../../HOOKS/useMovieLists";
 import useDebounce from "../../HOOKS/useDebounce";
 import { Link, useNavigate } from "react-router-dom";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMoon ,faSun} from "@fortawesome/free-solid-svg-icons";
+import themeContext from "../../CONTEXT/themeContext";
 function Navbar() {
   const resultListRef = useRef(null);
   let navigate = useNavigate();
@@ -11,18 +15,14 @@ function Navbar() {
   function handleMovieTitleClick(e, movieId) {
     navigate(`/movie/${movieId}`);
   }
+
+const {theme,setTheme}=useContext(themeContext)
   return (
     <>
       <div className="navbar-wrapper">
-        <div
-          style={{
-            color: "white",
-            textDecoration: "none",
-          }}
-        >
-         
-          <Link to="/">Movie Base</Link>
-        </div>
+        
+          <Link to="/" style={{textDecoration:'none'}}><div style={{color:'white'}}>Movie Base</div></Link>
+       
         <div className="search-bar">
           <input
             type="text"
@@ -53,7 +53,10 @@ function Navbar() {
               })}
           </div>
         </div>
-        <div>theme</div>
+        <div onClick={()=>setTheme(theme==='dark'?'light':'dark')}>
+          
+        <FontAwesomeIcon className="theme-icon" icon={theme==='dark'?faSun:faMoon} />
+        </div>
       </div>
     </>
   );
