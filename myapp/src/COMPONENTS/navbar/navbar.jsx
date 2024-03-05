@@ -11,6 +11,7 @@ function Navbar() {
   const resultListRef = useRef(null);
   let navigate = useNavigate();
   const [movieSearch, setMovieSearch] = useState("");
+  const [showMovieTitles,setShowMovieTitles]=useState(false)
   const { movieList } = useMovieList(!movieSearch ? "avengers" : movieSearch);
   function handleMovieTitleClick(e, movieId) {
     navigate(`/movie/${movieId}`);
@@ -44,11 +45,14 @@ const {theme,setTheme}=useContext(themeContext)
               resultListRef.current.style.display = "none";
             }}
             onChange={useDebounce((e) => {
+             
+              setShowMovieTitles(true)
+             
               setMovieSearch(e.target.value);
             })}
           />
           <div className="movies-suggestion" ref={resultListRef}>
-            {movieList.length > 0 &&
+            {showMovieTitles && movieList.length > 0 &&
               movieList.map((movie) => {
                 return (
                   <div
